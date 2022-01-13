@@ -12,5 +12,11 @@ categoriesRoutes.post("/", (request, response) => {
   return response.status(201).send({ message: "Categoria cadastrada com sucesso!"});
 });
 
+categoriesRoutes.get("/", (request, response) => {
+  const all = categoriesRepository.list();
+
+  return response.json(all);
+})
+
 export { categoriesRoutes };
 
