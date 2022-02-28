@@ -3,6 +3,7 @@ import { getRepository, Repository } from "typeorm"
 import { IUsersRepository } from "../IUsersRepository"
 import { ICreateUserDTO } from "../../dtos/ICreateUserDTO"
 import { User } from "../../entities/User"
+import { AppError } from "../../../../errors/AppError";
 
 class UsersRepository implements IUsersRepository {
   private repository: Repository<User>   
@@ -11,7 +12,7 @@ class UsersRepository implements IUsersRepository {
     this.repository = getRepository(User);
   }
   findById(id: string): Promise<User> {
-    throw new Error('Method not implemented.')
+    throw new AppError('Method not implemented.')
   }
   
   async create({ name, email, driver_license, password }: ICreateUserDTO): Promise<void> {
