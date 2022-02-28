@@ -10,6 +10,9 @@ class UsersRepository implements IUsersRepository {
   constructor() {
     this.repository = getRepository(User);
   }
+  findById(id: string): Promise<User> {
+    throw new Error('Method not implemented.')
+  }
   
   async create({ name, email, driver_license, password }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
