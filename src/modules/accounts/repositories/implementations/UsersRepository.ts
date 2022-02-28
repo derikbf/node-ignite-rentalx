@@ -15,12 +15,14 @@ class UsersRepository implements IUsersRepository {
     throw new AppError('Method not implemented.')
   }
   
-  async create({ name, email, driver_license, password }: ICreateUserDTO): Promise<void> {
+  async create({ name, email, driver_license, password, avatar, id }: ICreateUserDTO): Promise<void> {
     const user = this.repository.create({
       name, 
       email,
       driver_license,
       password,
+      avatar,
+      id,
     });
 
     await this.repository.save(user);
